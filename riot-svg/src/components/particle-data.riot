@@ -1,0 +1,21 @@
+<particle-component>
+  <g>
+    <rect
+      x={ state.particle.displayX }
+      y={ state.particle.displayY }
+      width="2"
+      height="2">
+    </rect>
+  </g>
+
+  <script>
+    export default {
+      onBeforeMount(props, state) {
+        this.state.particle = props.particle
+      }
+    }
+  </script>
+
+  <style scoped>
+  </style>
+</particle-component>

@@ -6,3 +6,4 @@ npm-debug.log
 *.map
 package-lock.json
 yarn.lock
+**/*.swp
