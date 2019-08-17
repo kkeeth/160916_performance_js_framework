@@ -1,90 +1,103 @@
 <app-component>
   <div>
-    <svg v-bind:width="innerWidth"
-         v-bind:height="innerHeight">
-      <ParticleComponent
-        v-for="particle in particles"
-        v-bind:key="particle.key"
-        v-bind:particle="particle">
-      </ParticleComponent>
+    <svg width={ window.innerWidth }
+         height={ window.innerHeight }>
+      <div each={ particle in state.particles }>
+        <particle-component key={ paticle.key } particle={ particle } />
+      </div>
     </svg>
     <div class="ui">
       <p>Emit Particle Per 1 Frame</p>
       <input type="range"
-             v-model="emitOnFrame"
-             min="1" max="50" />
+             name="emitOnFrame"
+             value={ state.emitOnFrame }
+             onchange={ handleChange }
+             min="1"
+             max="50" />
       <input type="number"
-             v-model="emitOnFrame"
-             min="1" max="50" />
-      <p>現在のパーティクル数 : {particles.length} 個</p>
+             name="emitOnFrame"
+             value={ state.emitOnFrame }
+             onchange={ handleChange }
+             min="1"
+             max="50" />
+      <p>現在のパーティクル数 : { state.particles.length } 個</p>
     </div>
   </div>
 
   <script>
-    import { ParticleData } from '../particle-data';
-    import ParticleComponent from './particle-component.riot';
-    let count = 0;
+    import { register } from 'riot'
+    import { ParticleData } from '../particle-data'
+    import ParticleComponent from './particle-component.riot'
+    let count = 0
 
     export default {
-      name: 'AppComponent',
       components: {
-        ParticleComponent,
+        ParticleComponent
       },
-      data: function () {
-        return {
+      onBeforeMount() {
+        register('particle-component', ParticleComponent)
+        this.state = {
           particles: [],
-          emitOnFrame: 3,
-          innerWidth: 0,
-          innerHeight: 0,
-        };
+          emitOnFrame: 3
+        }
       },
-      mounted: function () {
-        requestAnimationFrame(this.tick);
+      onMounted(props, state) {
+        this.tick()
+        this.update()
       },
-      methods: {
-        handleChange: function (e) {
-          const num = Number(e.currentTarget.value);
-          this.emitOnFrame = num;
-        },
-        /** エンターフレームイベントです。 */
-        tick: function () {
-          const particles = this.particles.concat();
-          // 発生
-          const len = Number(this.emitOnFrame);
-          for (let i = 0; i < len; i++) {
-            particles.push(new ParticleData(
-              innerWidth / 2,
-              innerHeight / 4,
-              count++));
+      handleChange(e) {
+        const num = Number(e.currentTarget.value)
+        this.state.emitOnFrame = num
+        this.update()
+      },
+      /** エンターフレームイベントです。 */
+      tick() {
+        const particles = this.state.particles.concat()
+        // 発生
+        const len = Number(this.state.emitOnFrame)
+        for (let i = 0; i < len; i++) {
+          particles.push(new ParticleData(
+            window.innerWidth / 2,
+            window.innerHeight / 4,
+            count++)
+          );
+        }
+
+        // 更新
+        particles.forEach((particle, index) => {
+          particle.update()
+          // 寿命の判定
+          if (particle.life <= 0) {
+            // 配列からも削除
+            particles.splice(index, 1)
           }
-          // 更新
-          particles.forEach((particle, index) => {
-            particle.update();
-            // 寿命の判定
-            if (particle.life <= 0) {
-              // 配列からも削除
-              particles.splice(index, 1);
-            }
-          });
-          if(this.innerWidth !== window.innerWidth){
-            this.innerWidth = window.innerWidth;
-          }
-          if(this.innerHeight !== window.innerHeight){
-            this.innerHeight = window.innerHeight;
-          }
-          this.particles = particles;
-          // setTimeout(()=>{this.tick()}, 1000);
-          requestAnimationFrame(this.tick);
-        },
+        })
+
+        // 更新
+        this.state.particles = particles
+        requestAnimationFrame(() => {
+          this.tick()
+        })
       },
     };
   </script>
 
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
     .ui {
       position: absolute;
       top: 10px;
       right: 10px;
+    }
+
+    .particle {
+      font-size: 2rem;
+      position: absolute;
     }
   </style>
 </app-component>

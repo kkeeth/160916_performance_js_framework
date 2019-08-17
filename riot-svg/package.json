@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "riot": "^4.3.5"
+    "riot": "^4.3.8",
+    "riot-route": "^3.1.4"
   },
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "parcel public/index.html --open",
+    "build": "parcel build public/index.html --out-dir=dist"
   },
   "eslintConfig": {
     "extends": "eslint:recommended"
@@ -24,5 +25,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@riotjs/parcel-plugin-riot": "^4.0.1",
+    "@types/riot": "^3.6.2",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.3"
   }
 }

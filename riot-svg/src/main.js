@@ -1,5 +1,4 @@
-import { register, mount, component } from 'riot';
-import AppComponent from './app-component';
+import { component } from 'riot'
+import AppComponent from './components/app-component.riot'
 
-register('app-component', AppComponent)
-mount('[is=app-component]')
+component(AppComponent)(document.getElementById("root"))
