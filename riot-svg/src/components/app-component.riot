@@ -1,17 +1,9 @@
 <app-component>
   <div>
     <svg width={ window.innerWidth }
-         height={ window.innerHeight }>
-      <g each={ (particle, index) in state.particles }
-         key={ index }>
-        <rect
-          x={ particle.displayX }
-          y={ particle.displayY }
-          width="2"
-          height="2">
-        </rect>
-      </g>
-    </svg>
+         height={ window.innerHeight }
+         is="particle-component"
+         particles={ state.particles } />
     <div class="ui">
       <p>Emit Particle Per 1 Frame</p>
       <input type="range"
@@ -33,24 +25,27 @@
   <script>
     import { register } from 'riot'
     import { ParticleData } from '../particle-data'
-    // 本当はこのタグを活用したかった
-    // import ParticleComponent from './particle-component.riot'
+    import ParticleComponent from './particle-component.riot'
     let count = 0
 
     export default {
-      // components: {
-      //   ParticleComponent
-      // },
+      components: {
+         ParticleComponent
+      },
       onBeforeMount() {
-        // register('particle-component', ParticleComponent)
+        register('particle-component', ParticleComponent)
         this.state = {
           particles: [],
           emitOnFrame: 3
         }
       },
-      onMounted(props, state) {
+      onMounted() {
         this.tick()
         this.update()
+      },
+      onUpdated() {
+        this.state.particles.map((particle) => {
+        })
       },
       handleChange(e) {
         const num = Number(e.currentTarget.value)

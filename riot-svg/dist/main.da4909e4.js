@@ -2529,6 +2529,53 @@ class ParticleData {
 }
 
 exports.ParticleData = ParticleData;
+},{}],"../src/components/particle-component.riot":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  'css': null,
+  'exports': {
+    onBeforeMount(props) {}
+
+  },
+  'template': function (template, expressionTypes, bindingTypes, getComponent) {
+    return template('<g expr87="expr87"></g>', [{
+      'type': bindingTypes.EACH,
+      'getKey': null,
+      'condition': null,
+      'template': template('<rect expr88="expr88" width="2" height="2"/>', [{
+        'redundantAttribute': 'expr88',
+        'selector': '[expr88]',
+        'expressions': [{
+          'type': expressionTypes.ATTRIBUTE,
+          'name': 'x',
+          'evaluate': function (scope) {
+            return scope.particle.displayX;
+          }
+        }, {
+          'type': expressionTypes.ATTRIBUTE,
+          'name': 'y',
+          'evaluate': function (scope) {
+            return scope.particle.displayY;
+          }
+        }]
+      }]),
+      'redundantAttribute': 'expr87',
+      'selector': '[expr87]',
+      'itemName': 'particle',
+      'indexName': null,
+      'evaluate': function (scope) {
+        return scope.props.particles;
+      }
+    }]);
+  },
+  'name': 'particle-component'
+};
+exports.default = _default;
 },{}],"../src/components/app-component.riot":[function(require,module,exports) {
 "use strict";
 
@@ -2541,26 +2588,33 @@ var _riot = require("riot");
 
 var _particleData = require("../particle-data");
 
-// 本当はこのタグを活用したかった
-// import ParticleComponent from './particle-component.riot'
+var _particleComponent = _interopRequireDefault(require("./particle-component.riot"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 let count = 0;
 var _default = {
   'css': `app-component body,[is="app-component"] body{ margin: 0; padding: 0; overflow: hidden; } app-component .ui,[is="app-component"] .ui{ position: absolute; top: 10px; right: 10px; }`,
   'exports': {
-    // components: {
-    //   ParticleComponent
-    // },
+    components: {
+      ParticleComponent: _particleComponent.default
+    },
+
     onBeforeMount() {
-      // register('particle-component', ParticleComponent)
+      (0, _riot.register)('particle-component', _particleComponent.default);
       this.state = {
         particles: [],
         emitOnFrame: 3
       };
     },
 
-    onMounted(props, state) {
+    onMounted() {
       this.tick();
       this.update();
+    },
+
+    onUpdated() {
+      this.state.particles.map(particle => {});
     },
 
     handleChange(e) {
@@ -2598,10 +2652,14 @@ var _default = {
 
   },
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<div><svg expr60="expr60"><g expr61="expr61"></g></svg><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr63="expr63" type="range" name="emitOnFrame" min="1" max="50"/><input expr64="expr64" type="number" name="emitOnFrame" min="1" max="50"/><p expr65="expr65"><!----></p></div></div>', [{
-      'redundantAttribute': 'expr60',
-      'selector': '[expr60]',
-      'expressions': [{
+    return template('<div><svg expr83="expr83" is="particle-component"></svg><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr84="expr84" type="range" name="emitOnFrame" min="1" max="50"/><input expr85="expr85" type="number" name="emitOnFrame" min="1" max="50"/><p expr86="expr86"><!----></p></div></div>', [{
+      'type': bindingTypes.TAG,
+      'getComponent': getComponent,
+      'evaluate': function (scope) {
+        return 'particle-component';
+      },
+      'slots': [],
+      'attributes': [{
         'type': expressionTypes.ATTRIBUTE,
         'name': 'width',
         'evaluate': function (scope) {
@@ -2613,40 +2671,18 @@ var _default = {
         'evaluate': function (scope) {
           return window.innerHeight;
         }
-      }]
+      }, {
+        'type': expressionTypes.ATTRIBUTE,
+        'name': 'particles',
+        'evaluate': function (scope) {
+          return scope.state.particles;
+        }
+      }],
+      'redundantAttribute': 'expr83',
+      'selector': '[expr83]'
     }, {
-      'type': bindingTypes.EACH,
-      'getKey': function (scope) {
-        return scope.index;
-      },
-      'condition': null,
-      'template': template('<rect expr62="expr62" width="2" height="2"/>', [{
-        'redundantAttribute': 'expr62',
-        'selector': '[expr62]',
-        'expressions': [{
-          'type': expressionTypes.ATTRIBUTE,
-          'name': 'x',
-          'evaluate': function (scope) {
-            return scope.particle.displayX;
-          }
-        }, {
-          'type': expressionTypes.ATTRIBUTE,
-          'name': 'y',
-          'evaluate': function (scope) {
-            return scope.particle.displayY;
-          }
-        }]
-      }]),
-      'redundantAttribute': 'expr61',
-      'selector': '[expr61]',
-      'itemName': 'particle',
-      'indexName': 'index',
-      'evaluate': function (scope) {
-        return scope.state.particles;
-      }
-    }, {
-      'redundantAttribute': 'expr63',
-      'selector': '[expr63]',
+      'redundantAttribute': 'expr84',
+      'selector': '[expr84]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2660,8 +2696,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr64',
-      'selector': '[expr64]',
+      'redundantAttribute': 'expr85',
+      'selector': '[expr85]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2675,8 +2711,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr65',
-      'selector': '[expr65]',
+      'redundantAttribute': 'expr86',
+      'selector': '[expr86]',
       'expressions': [{
         'type': expressionTypes.TEXT,
         'childNodeIndex': 0,
@@ -2689,7 +2725,7 @@ var _default = {
   'name': 'app-component'
 };
 exports.default = _default;
-},{"riot":"../node_modules/riot/riot.esm.js","../particle-data":"../src/particle-data.js"}],"../src/main.js":[function(require,module,exports) {
+},{"riot":"../node_modules/riot/riot.esm.js","../particle-data":"../src/particle-data.js","./particle-component.riot":"../src/components/particle-component.riot"}],"../src/main.js":[function(require,module,exports) {
 "use strict";
 
 var _riot = require("riot");
@@ -2727,7 +2763,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49538" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64860" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

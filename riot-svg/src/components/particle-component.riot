@@ -1,11 +1,16 @@
 <particle-component>
-  <!-- 本当はこのタグを使いたかった… -->
-  <g>
+  <g each={ particle in props.particles }>
     <rect
-      x={ props.particle.displayX }
-      y={ props.particle.displayY }
+      x={ particle.displayX }
+      y={ particle.displayY }
       width="2"
       height="2">
     </rect>
   </g>
+  <script>
+    export default {
+      onBeforeMount(props) {
+      }
+    }
+  </script>
 </particle-component>
