@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "riot": "^4.3.8",
+    "riot": "^4.4.0",
     "riot-route": "^3.1.4"
   },
   "homepage": "./",

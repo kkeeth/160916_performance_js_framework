@@ -132,7 +132,7 @@ exports.unmount = unmount;
 exports.unregister = unregister;
 exports.version = exports.__ = void 0;
 
-/* Riot v4.3.8, @license MIT */
+/* Riot v4.4.0, @license MIT */
 const COMPONENTS_IMPLEMENTATION_MAP = new Map(),
       DOM_COMPONENT_INSTANCE_PROPERTY = Symbol('riot-component'),
       PLUGINS_SET = new Set(),
@@ -2460,7 +2460,7 @@ function component(implementation) {
 /** @type {string} current riot version */
 
 
-const version = 'v4.3.8'; // expose some internal stuff that might be used from external tools
+const version = 'v4.4.0'; // expose some internal stuff that might be used from external tools
 
 exports.version = version;
 const __ = {
@@ -2540,9 +2540,9 @@ var _default = {
   'css': null,
   'exports': null,
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<g><rect expr59 width="2" height="2"/></g>', [{
-      'redundantAttribute': 'expr59',
-      'selector': '[expr59]',
+    return template('<g><rect expr6="expr6" width="2" height="2"/></g>', [{
+      'redundantAttribute': 'expr6',
+      'selector': '[expr6]',
       'expressions': [{
         'type': expressionTypes.ATTRIBUTE,
         'name': 'x',
@@ -2632,9 +2632,9 @@ var _default = {
 
   },
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<div><svg expr101><div expr102></div></svg><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr104 type="range" name="emitOnFrame" min="1" max="50"/><input expr105 type="number" name="emitOnFrame" min="1" max="50"/><p expr106><!----></p></div></div>', [{
-      'redundantAttribute': 'expr101',
-      'selector': '[expr101]',
+    return template('<div><svg expr0="expr0"><div expr1="expr1"></div></svg><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr3="expr3" type="range" name="emitOnFrame" min="1" max="50"/><input expr4="expr4" type="number" name="emitOnFrame" min="1" max="50"/><p expr5="expr5"><!----></p></div></div>', [{
+      'redundantAttribute': 'expr0',
+      'selector': '[expr0]',
       'expressions': [{
         'type': expressionTypes.ATTRIBUTE,
         'name': 'width',
@@ -2652,7 +2652,7 @@ var _default = {
       'type': bindingTypes.EACH,
       'getKey': null,
       'condition': null,
-      'template': template('<particle-component expr103></particle-component>', [{
+      'template': template('<particle-component expr2="expr2"></particle-component>', [{
         'type': bindingTypes.TAG,
         'getComponent': getComponent,
         'evaluate': function (scope) {
@@ -2666,19 +2666,19 @@ var _default = {
             return scope.particle;
           }
         }],
-        'redundantAttribute': 'expr103',
-        'selector': '[expr103]'
+        'redundantAttribute': 'expr2',
+        'selector': '[expr2]'
       }]),
-      'redundantAttribute': 'expr102',
-      'selector': '[expr102]',
+      'redundantAttribute': 'expr1',
+      'selector': '[expr1]',
       'itemName': 'particle',
       'indexName': null,
       'evaluate': function (scope) {
         return scope.state.particles;
       }
     }, {
-      'redundantAttribute': 'expr104',
-      'selector': '[expr104]',
+      'redundantAttribute': 'expr3',
+      'selector': '[expr3]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2692,8 +2692,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr105',
-      'selector': '[expr105]',
+      'redundantAttribute': 'expr4',
+      'selector': '[expr4]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2707,8 +2707,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr106',
-      'selector': '[expr106]',
+      'redundantAttribute': 'expr5',
+      'selector': '[expr5]',
       'expressions': [{
         'type': expressionTypes.TEXT,
         'childNodeIndex': 0,
@@ -2759,7 +2759,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55984" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50285" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
