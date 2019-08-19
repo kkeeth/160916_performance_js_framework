@@ -2,9 +2,15 @@
   <div>
     <svg width={ window.innerWidth }
          height={ window.innerHeight }>
-      <div each={ particle in state.particles }>
-        <particle-component key={ paticle.key } particle={ particle } />
-      </div>
+      <g each={ (particle, index) in state.particles }
+         key={ index }>
+        <rect
+          x={ particle.displayX }
+          y={ particle.displayY }
+          width="2"
+          height="2">
+        </rect>
+      </g>
     </svg>
     <div class="ui">
       <p>Emit Particle Per 1 Frame</p>
@@ -27,15 +33,16 @@
   <script>
     import { register } from 'riot'
     import { ParticleData } from '../particle-data'
-    import ParticleComponent from './particle-component.riot'
+    // 本当はこのタグを活用したかった
+    // import ParticleComponent from './particle-component.riot'
     let count = 0
 
     export default {
-      components: {
-        ParticleComponent
-      },
+      // components: {
+      //   ParticleComponent
+      // },
       onBeforeMount() {
-        register('particle-component', ParticleComponent)
+        // register('particle-component', ParticleComponent)
         this.state = {
           particles: [],
           emitOnFrame: 3
@@ -75,6 +82,7 @@
 
         // 更新
         this.state.particles = particles
+        this.update()
         requestAnimationFrame(() => {
           this.tick()
         })
@@ -93,11 +101,6 @@
       position: absolute;
       top: 10px;
       right: 10px;
-    }
-
-    .particle {
-      font-size: 2rem;
-      position: absolute;
     }
   </style>
 </app-component>
