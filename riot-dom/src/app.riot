@@ -1,6 +1,8 @@
 <app-component>
   <div class="particle-container">
-    <particle-obj each={ particle in state.particles } particle={ particle } />
+    <particle-obj each={ particle in state.particles }
+                  particle={ particle }
+                  item={ state.particleItem } />
   </div>
   <div class="ui">
     <p>Emit Particle Per 1 Frame</p>
@@ -18,6 +20,12 @@
            max="50" />
 
     <p>現在のパーティクル数 : { state.particles.length } 個</p>
+    <span>現在のパーティクル : </span>
+    <select onchange={ handleSelect }>
+      <option value="😊">😊</option>
+      <option value="🍣">🍣</option>
+      <option value="🍺">🍺</option>
+    </select>
   </div>
 
   <script>
@@ -33,7 +41,8 @@
        onBeforeMount() {
           this.state = {
              particles: [],
-             emitOnFrame: 3
+             emitOnFrame: 3,
+             particleItem: '😊'
           }
        },
        onMounted() {
@@ -76,6 +85,9 @@
          // キャストしないとエラーになる
          this.state.emitOnFrame = Number(e.currentTarget.value)
          this.update()
+       },
+       handleSelect(e) {
+         this.state.particleItem = e.currentTarget.value
        }
     }
   </script>
