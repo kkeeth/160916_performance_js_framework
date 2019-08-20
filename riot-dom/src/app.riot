@@ -1,0 +1,85 @@
+<app-component>
+  <div class="particle-container">
+    <particle-obj each={ particle in state.particles } particle={ particle } />
+  </div>
+  <div class="ui">
+    <p>Emit Particle Per 1 Frame</p>
+    <input type="range"
+           name="emitOnFrame"
+           value={ state.emitOnFrame }
+           onchange={ handleChange }
+           min="1"
+           max="50" />
+    <input type="number"
+           name="emitOnFrame"
+           value={ state.emitOnFrame }
+           onchange={ handleChange }
+           min="1"
+           max="50" />
+
+    <p>現在のパーティクル数 : { state.particles.length } 個</p>
+  </div>
+
+  <script>
+    import { register } from 'riot'
+    import { ParticleData } from './particle'
+    import ParticleObj from './particle-obj.riot'
+    let count = 0
+
+    export default {
+       components: {
+          ParticleObj
+       },
+       onBeforeMount() {
+          this.state = {
+             particles: [],
+             emitOnFrame: 3
+          }
+       },
+       onMounted() {
+          this.tick()
+          this.update()
+       },
+       /** エンターフレームイベントです。 */
+       tick() {
+          const particles = this.state.particles.concat()
+          // 発生
+          const len = Number(this.state.emitOnFrame)
+          for (let i = 0; i < len; i++) {
+            particles.push(new ParticleData(
+              window.innerWidth / 2,
+              window.innerHeight / 4,
+              this.count++
+            ))
+          }
+
+          // 更新
+          particles.forEach((particle, index) => {
+             // ランダムアップデートが無効の場合は常にアップデートする
+             particle.update()
+
+             // 寿命の判定
+             if (particle.life <= 0) {
+                // 配列からも削除
+                particles.splice(index, 1)
+             }
+          })
+
+          // 更新
+          this.state.particles = particles
+          this.update()
+          requestAnimationFrame(() => {
+            this.tick()
+          })
+       },
+       handleChange(e) {
+         // キャストしないとエラーになる
+         this.state.emitOnFrame = Number(e.currentTarget.value)
+         console.log(this.state)
+         this.update()
+       }
+    }
+  </script>
+
+  <style src="./style.css" scoped></style>
+</app-component>

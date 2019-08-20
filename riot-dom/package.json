@@ -1,19 +1,19 @@
 {
-  "name": "react-dom",
+  "name": "riot-dom",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "riot": "^4.4.0",
+    "riot-route": "^3.1.4"
   },
   "homepage": "./",
+  "main": "src/main.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html --out-dir=dist"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "eslint:recommended"
   },
   "browserslist": {
     "production": [
@@ -26,5 +26,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@riotjs/parcel-plugin-riot": "^4.0.1",
+    "parcel-bundler": "^1.12.3"
   }
 }
