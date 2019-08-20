@@ -33,7 +33,6 @@
          ParticleComponent
       },
       onBeforeMount() {
-        register('particle-component', ParticleComponent)
         this.state = {
           particles: [],
           emitOnFrame: 3
@@ -43,13 +42,8 @@
         this.tick()
         this.update()
       },
-      onUpdated() {
-        this.state.particles.map((particle) => {
-        })
-      },
       handleChange(e) {
-        const num = Number(e.currentTarget.value)
-        this.state.emitOnFrame = num
+        this.state.emitOnFrame = Number(e.currentTarget.value)
         this.update()
       },
       /** エンターフレームイベントです。 */
