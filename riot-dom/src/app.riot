@@ -75,11 +75,31 @@
        handleChange(e) {
          // キャストしないとエラーになる
          this.state.emitOnFrame = Number(e.currentTarget.value)
-         console.log(this.state)
          this.update()
        }
     }
   </script>
 
-  <style src="./style.css" scoped></style>
+  <style scoped>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .ui {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .particle {
+      font-size: 2rem;
+      position: absolute;
+    }
+
+    .particle-container {
+      position: absolute;
+    }
+  </style>
 </app-component>

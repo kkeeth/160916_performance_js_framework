@@ -2529,12 +2529,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _default = {
-  'css': `particle-obj .particle,[is="particle-obj"] .particle{ position: absolute; }`,
+  'css': null,
   'exports': null,
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<div expr6="expr6" class="particle">😊</div>', [{
-      'redundantAttribute': 'expr6',
-      'selector': '[expr6]',
+    return template('<div expr20="expr20" class="particle">😊</div>', [{
+      'redundantAttribute': 'expr20',
+      'selector': '[expr20]',
       'expressions': [{
         'type': expressionTypes.ATTRIBUTE,
         'name': 'style',
@@ -2568,7 +2568,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 let count = 0;
 var _default = {
-  'css': null,
+  'css': `app-component body,[is="app-component"] body{ margin: 0; padding: 0; overflow: hidden; } app-component .ui,[is="app-component"] .ui{ position: absolute; top: 10px; right: 10px; } app-component .particle,[is="app-component"] .particle{ font-size: 2rem; position: absolute; } app-component .particle-container,[is="app-component"] .particle-container{ position: absolute; }`,
   'exports': {
     components: {
       ParticleObj: _particleObj.default
@@ -2617,13 +2617,12 @@ var _default = {
     handleChange(e) {
       // キャストしないとエラーになる
       this.state.emitOnFrame = Number(e.currentTarget.value);
-      console.log(this.state);
       this.update();
     }
 
   },
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<div class="particle-container"><particle-obj expr31="expr31"></particle-obj></div><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr32="expr32" type="range" name="emitOnFrame" min="1" max="50"/><input expr33="expr33" type="number" name="emitOnFrame" min="1" max="50"/><p expr34="expr34"><!----></p></div>', [{
+    return template('<div class="particle-container"><particle-obj expr16="expr16"></particle-obj></div><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr17="expr17" type="range" name="emitOnFrame" min="1" max="50"/><input expr18="expr18" type="number" name="emitOnFrame" min="1" max="50"/><p expr19="expr19"><!----></p></div>', [{
       'type': bindingTypes.EACH,
       'getKey': null,
       'condition': null,
@@ -2642,16 +2641,16 @@ var _default = {
           }
         }]
       }]),
-      'redundantAttribute': 'expr31',
-      'selector': '[expr31]',
+      'redundantAttribute': 'expr16',
+      'selector': '[expr16]',
       'itemName': 'particle',
       'indexName': null,
       'evaluate': function (scope) {
         return scope.state.particles;
       }
     }, {
-      'redundantAttribute': 'expr32',
-      'selector': '[expr32]',
+      'redundantAttribute': 'expr17',
+      'selector': '[expr17]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2665,8 +2664,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr33',
-      'selector': '[expr33]',
+      'redundantAttribute': 'expr18',
+      'selector': '[expr18]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2680,8 +2679,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr34',
-      'selector': '[expr34]',
+      'redundantAttribute': 'expr19',
+      'selector': '[expr19]',
       'expressions': [{
         'type': expressionTypes.TEXT,
         'childNodeIndex': 0,
@@ -2732,7 +2731,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52155" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55182" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
