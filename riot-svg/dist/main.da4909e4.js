@@ -2538,18 +2538,15 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   'css': null,
-  'exports': {
-    onBeforeMount(props) {}
-
-  },
+  'exports': null,
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<g expr87="expr87"></g>', [{
+    return template('<g expr10="expr10"></g>', [{
       'type': bindingTypes.EACH,
       'getKey': null,
       'condition': null,
-      'template': template('<rect expr88="expr88" width="2" height="2"/>', [{
-        'redundantAttribute': 'expr88',
-        'selector': '[expr88]',
+      'template': template('<rect expr11="expr11" width="8" height="8"/>', [{
+        'redundantAttribute': 'expr11',
+        'selector': '[expr11]',
         'expressions': [{
           'type': expressionTypes.ATTRIBUTE,
           'name': 'x',
@@ -2564,8 +2561,8 @@ var _default = {
           }
         }]
       }]),
-      'redundantAttribute': 'expr87',
-      'selector': '[expr87]',
+      'redundantAttribute': 'expr10',
+      'selector': '[expr10]',
       'itemName': 'particle',
       'indexName': null,
       'evaluate': function (scope) {
@@ -2601,7 +2598,6 @@ var _default = {
     },
 
     onBeforeMount() {
-      (0, _riot.register)('particle-component', _particleComponent.default);
       this.state = {
         particles: [],
         emitOnFrame: 3
@@ -2613,13 +2609,8 @@ var _default = {
       this.update();
     },
 
-    onUpdated() {
-      this.state.particles.map(particle => {});
-    },
-
     handleChange(e) {
-      const num = Number(e.currentTarget.value);
-      this.state.emitOnFrame = num;
+      this.state.emitOnFrame = Number(e.currentTarget.value);
       this.update();
     },
 
@@ -2652,7 +2643,7 @@ var _default = {
 
   },
   'template': function (template, expressionTypes, bindingTypes, getComponent) {
-    return template('<div><svg expr83="expr83" is="particle-component"></svg><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr84="expr84" type="range" name="emitOnFrame" min="1" max="50"/><input expr85="expr85" type="number" name="emitOnFrame" min="1" max="50"/><p expr86="expr86"><!----></p></div></div>', [{
+    return template('<div><svg expr0="expr0" is="particle-component"></svg><div class="ui"><p>Emit Particle Per 1 Frame</p><input expr1="expr1" type="range" name="emitOnFrame" min="1" max="50"/><input expr2="expr2" type="number" name="emitOnFrame" min="1" max="50"/><p expr3="expr3"><!----></p></div></div>', [{
       'type': bindingTypes.TAG,
       'getComponent': getComponent,
       'evaluate': function (scope) {
@@ -2678,11 +2669,11 @@ var _default = {
           return scope.state.particles;
         }
       }],
-      'redundantAttribute': 'expr83',
-      'selector': '[expr83]'
+      'redundantAttribute': 'expr0',
+      'selector': '[expr0]'
     }, {
-      'redundantAttribute': 'expr84',
-      'selector': '[expr84]',
+      'redundantAttribute': 'expr1',
+      'selector': '[expr1]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2696,8 +2687,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr85',
-      'selector': '[expr85]',
+      'redundantAttribute': 'expr2',
+      'selector': '[expr2]',
       'expressions': [{
         'type': expressionTypes.VALUE,
         'evaluate': function (scope) {
@@ -2711,8 +2702,8 @@ var _default = {
         }
       }]
     }, {
-      'redundantAttribute': 'expr86',
-      'selector': '[expr86]',
+      'redundantAttribute': 'expr3',
+      'selector': '[expr3]',
       'expressions': [{
         'type': expressionTypes.TEXT,
         'childNodeIndex': 0,
@@ -2763,7 +2754,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64860" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58333" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
