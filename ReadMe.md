@@ -17,6 +17,11 @@ Functional Component
 
 https://k-kuwahar.github.io/160916_performance_js_framework/vue-svg-functional/dist/index.html
 
+### Riot.js
+
+https://k-kuwahar.github.io/160916_performance_js_framework/riot-svg/dist/index.html
+
+
 ### Vanilla JS
 https://k-kuwahar.github.io/160916_performance_js_framework/vanillajs-svg
 
@@ -34,6 +39,4 @@ https://k-kuwahar.github.io/160916_performance_js_framework/vue-dom/dist/index.h
 ### Riot.js
 
 https://k-kuwahar.github.io/160916_performance_js_framework/riot-dom/dist/index.html
-
-https://k-kuwahar.github.io/160916_performance_js_framework/riot-svg/dist/index.html
 
