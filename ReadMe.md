@@ -19,7 +19,7 @@ https://ics-creative.github.io/160916_performance_js_framework/vue-svg-functiona
 
 ### Riot.js
 
-https://k-kuwahara.github.io/160916_performance_js_framework/riot-svg/dist/index.html
+https://kkeeth.github.io/160916_performance_js_framework/riot-svg/dist/index.html
 
 
 ### Vanilla JS
@@ -38,5 +38,5 @@ https://ics-creative.github.io/160916_performance_js_framework/vue-dom/dist/inde
 
 ### Riot.js
 
-https://k-kuwahara.github.io/160916_performance_js_framework/riot-dom/dist/index.html
+https://kkeeth.github.io/160916_performance_js_framework/riot-dom/dist/index.html
 

@@ -29,5 +29,9 @@
   "devDependencies": {
     "@riotjs/parcel-plugin-riot": "^4.0.1",
     "parcel-bundler": "^1.12.3"
+  },
+  "author": {
+    "name": "kkeeth",
+    "email": "zensin0082@gmail.com"
   }
 }
